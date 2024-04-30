@@ -12,4 +12,8 @@ public class Apple {
     public boolean isGreen() {
         return color.isGreen();
     }
+
+    public Color getColor() {
+        return color;
+    }
 }

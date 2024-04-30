@@ -19,4 +19,14 @@ public class FilteringApples {
         }
         return result;
     }
+
+    public static List<Apple> filterApplesByColor(List<Apple> inventory, Color color) {
+        List<Apple> result = new ArrayList<>();
+        for (Apple apple : inventory) {
+            if (apple.getColor() == color) {
+                result.add(apple);
+            }
+        }
+        return result;
+    }
 }
