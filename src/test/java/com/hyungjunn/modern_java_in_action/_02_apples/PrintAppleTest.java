@@ -1,5 +1,7 @@
 package com.hyungjunn.modern_java_in_action._02_apples;
 
+import com.hyungjunn.modern_java_in_action._02_apples.strategy.AppleFancyFormatter;
+import com.hyungjunn.modern_java_in_action._02_apples.strategy.AppleSimpleFormatter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
