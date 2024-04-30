@@ -39,4 +39,15 @@ public class FilteringApples {
         }
         return result;
     }
+
+    // 색이나 무게 중 어떤 것을 기준으로 필터링할지 정해주는 flag 를 추가
+    public static List<Apple> filterApples(List<Apple> inventory, Color color, int weight, boolean flag) {
+        List<Apple> result = new ArrayList<>();
+        for (Apple apple : inventory) {
+            if ((flag && apple.getColor() == color) || (!flag && apple.isWeightAbove(weight))) {
+                result.add(apple);
+            }
+        }
+        return result;
+    }
 }

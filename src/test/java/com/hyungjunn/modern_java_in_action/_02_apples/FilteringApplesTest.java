@@ -1,5 +1,6 @@
 package com.hyungjunn.modern_java_in_action._02_apples;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -41,5 +42,14 @@ public class FilteringApplesTest {
     void filterApplesByWeight() {
         List<Apple> greenApples = FilteringApples.filterApplesByWeight(inventory, 150);
         assertThat(greenApples).hasSize(1);
+    }
+
+    @Test
+    void filterApples() {
+        List<Apple> greenApples = FilteringApples.filterApples(inventory, GREEN, 0, true);
+        assertThat(greenApples).hasSize(2);
+
+        List<Apple> heavyApples = FilteringApples.filterApples(inventory, null, 150, false);
+        assertThat(heavyApples).hasSize(1);
     }
 }
