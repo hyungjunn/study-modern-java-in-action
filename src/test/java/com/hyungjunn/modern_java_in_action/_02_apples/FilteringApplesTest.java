@@ -1,6 +1,5 @@
 package com.hyungjunn.modern_java_in_action._02_apples;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +8,7 @@ import java.util.List;
 
 import static com.hyungjunn.modern_java_in_action._02_apples.Color.GREEN;
 import static com.hyungjunn.modern_java_in_action._02_apples.Color.RED;
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class FilteringApplesTest {
     private List<Apple> inventory;
