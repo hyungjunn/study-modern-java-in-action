@@ -20,8 +20,14 @@ public class PrintAppleTest {
                 new Apple(120, RED)
         );
     }
+
     @Test
-    void prettyPrintApple() {
+    void printFancy() {
         PrintApple.prettyPrintApple(inventory, new AppleFancyFormatter());
+    }
+
+    @Test
+    void printSimple() {
+        PrintApple.prettyPrintApple(inventory, new AppleSimpleFormatter());
     }
 }

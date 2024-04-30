@@ -28,4 +28,8 @@ public class Apple {
     public boolean isRed() {
         return this.color.isRed();
     }
+
+    public int getWeight() {
+        return this.weight;
+    }
 }
