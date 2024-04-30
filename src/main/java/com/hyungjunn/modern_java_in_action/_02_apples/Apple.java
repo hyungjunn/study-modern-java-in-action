@@ -32,4 +32,12 @@ public class Apple {
     public int getWeight() {
         return this.weight;
     }
+
+    @Override
+    public String toString() {
+        return "Apple{" +
+                "weight=" + weight +
+                ", color=" + color +
+                '}';
+    }
 }

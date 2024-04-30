@@ -3,17 +3,16 @@ package com.hyungjunn.modern_java_in_action._02_apples;
 import com.hyungjunn.modern_java_in_action._02_apples.strategy.AppleGreenColorPredicate;
 import com.hyungjunn.modern_java_in_action._02_apples.strategy.AppleHeavyWeightPredicate;
 import com.hyungjunn.modern_java_in_action._02_apples.strategy.AppleRedColorAndLightPredicate;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 import static com.hyungjunn.modern_java_in_action._02_apples.Color.GREEN;
 import static com.hyungjunn.modern_java_in_action._02_apples.Color.RED;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.in;
 
 public class FilteringApplesTest {
     private List<Apple> inventory;
@@ -105,5 +104,24 @@ public class FilteringApplesTest {
         List<Integer> evenNumbers = FilteringApples.filter(numbers, (Integer i) -> i % 2 == 0);
 
         assertThat(evenNumbers).hasSize(5);
+    }
+
+    @Test
+    void compare() {
+        inventory.sort(new Comparator<Apple>() {
+            @Override
+            public int compare(Apple apple1, Apple apple2) {
+                return apple1.getWeight() - apple2.getWeight();
+            }
+        });
+
+        System.out.println(inventory);
+    }
+
+    @Test
+    void compareWithLambda() {
+        inventory.sort((a1, a2) -> a1.getWeight() - a2.getWeight());
+
+        System.out.println(inventory);
     }
 }
