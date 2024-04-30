@@ -9,7 +9,7 @@ public class Apple {
         this.color = color;
     }
 
-    public String getColor() {
-        return color;
+    public boolean isGreen() {
+        return "green".equals(color);
     }
 }

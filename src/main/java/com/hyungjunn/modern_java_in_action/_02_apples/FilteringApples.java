@@ -7,7 +7,7 @@ public class FilteringApples {
     public static List<Apple> filterGreenApples(List<Apple> inventory) {
         List<Apple> result = new ArrayList<>();
         for (Apple apple : inventory) {
-            if ("green".equals(apple.getColor())) {
+            if (apple.isGreen()) {
                 result.add(apple);
             }
         }
