@@ -5,9 +5,9 @@ import java.util.List;
 
 /**
  * 계속 변화하는 요구사항 -> 동작 파라미터화로 해결가능
- * 리스트의 모든 요소에 대해서 '어떤 동작'을 수행할 수 있음.
- * 리스트 관련 작업을 끝낸 다음에 '어떤 다른 동작'을 수행할 수 있음.
- * 에러가 발생하면 '정해진 어떤 다른 동작'을 수행할 수 있음.
+ * 바뀌는 요구사항에 따라 코드를 파라미터를 바꾸면서 새로 메서드를 만드는 것은 올바르지 않음
+ * 계속 바뀌는 부분은 if 절 안의 boolean 값이므로
+ * 참 거짓을 반환하는 프레디케이트를 정의하면 된다
  */
 public class FilteringApples {
     public static List<Apple> filterGreenApples(List<Apple> inventory) {
@@ -45,6 +45,16 @@ public class FilteringApples {
         List<Apple> result = new ArrayList<>();
         for (Apple apple : inventory) {
             if ((flag && apple.getColor() == color) || (!flag && apple.isWeightAbove(weight))) {
+                result.add(apple);
+            }
+        }
+        return result;
+    }
+
+    public static List<Apple> filterApples(List<Apple> inventory, ApplePredicate applePredicate) {
+        List<Apple> result = new ArrayList<>();
+        for (Apple apple : inventory) {
+            if (applePredicate.test(apple)) {
                 result.add(apple);
             }
         }
