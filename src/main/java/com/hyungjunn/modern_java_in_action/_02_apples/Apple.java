@@ -2,14 +2,14 @@ package com.hyungjunn.modern_java_in_action._02_apples;
 
 public class Apple {
     private final int weight;
-    private final String color;
+    private final Color color;
 
-    public Apple(int weight, String color) {
+    public Apple(int weight, Color color) {
         this.weight = weight;
         this.color = color;
     }
 
     public boolean isGreen() {
-        return "green".equals(color);
+        return color.isGreen();
     }
 }
