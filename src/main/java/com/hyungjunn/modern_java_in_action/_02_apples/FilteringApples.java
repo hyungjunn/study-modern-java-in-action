@@ -17,6 +17,8 @@ import java.util.List;
  * <p>
  * 하지만, 여전히 문제가 있다. 코드가 너무 장황해진다는 점이다.
  * 이를 해결하기 위해 람다 표현식을 활용할 수 있다.
+ * <p>
+ * 조금 더 확장 시키기 위해 ApplePredicate 를 리스트 형식으로 추상화시킬 수 있다.
  */
 public class FilteringApples {
     public static List<Apple> filterGreenApples(List<Apple> inventory) {
@@ -65,6 +67,16 @@ public class FilteringApples {
         for (Apple apple : inventory) {
             if (applePredicate.test(apple)) {
                 result.add(apple);
+            }
+        }
+        return result;
+    }
+
+    public static <T> List<T> filter(List<T> list, Predicate<T> p) {
+        List<T> result = new ArrayList<>();
+        for (T e : list) {
+            if (p.test(e)) {
+                result.add(e);
             }
         }
         return result;

@@ -3,6 +3,7 @@ package com.hyungjunn.modern_java_in_action._02_apples;
 import com.hyungjunn.modern_java_in_action._02_apples.strategy.AppleGreenColorPredicate;
 import com.hyungjunn.modern_java_in_action._02_apples.strategy.AppleHeavyWeightPredicate;
 import com.hyungjunn.modern_java_in_action._02_apples.strategy.AppleRedColorAndLightPredicate;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,6 +13,7 @@ import java.util.List;
 import static com.hyungjunn.modern_java_in_action._02_apples.Color.GREEN;
 import static com.hyungjunn.modern_java_in_action._02_apples.Color.RED;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.in;
 
 public class FilteringApplesTest {
     private List<Apple> inventory;
@@ -70,7 +72,7 @@ public class FilteringApplesTest {
     @Test
     void filterApplesByAppleRedColorAndLightWeightPredicate() {
         List<Apple> redAndLightApples = FilteringApples.filterApples(inventory, new AppleRedColorAndLightPredicate());
-        assertThat(redAndLightApples).hasSize(1 );
+        assertThat(redAndLightApples).hasSize(1);
     }
 
     @Test
@@ -88,5 +90,20 @@ public class FilteringApplesTest {
     void filterApplesByLambdaExpression() {
         List<Apple> redApples = FilteringApples.filterApples(inventory, apple -> apple.isRed());
         assertThat(redApples).hasSize(1);
+    }
+
+    @Test
+    void filterByIsRed() {
+        List<Apple> redApples = FilteringApples.filter(inventory, (Apple apple) -> apple.isRed());
+        assertThat(redApples).hasSize(1);
+    }
+
+    @Test
+    void filterNumbers() {
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+        List<Integer> evenNumbers = FilteringApples.filter(numbers, (Integer i) -> i % 2 == 0);
+
+        assertThat(evenNumbers).hasSize(5);
     }
 }
