@@ -14,6 +14,9 @@ import java.util.List;
  * 그러나, 이렇게 전략패턴을 이용해서 동작 파라미터화를 하면, 클래스를 번거롭게 계속 생성시켜줘야 한다.
  * 이를 익명클래스로 해결할 수 있다.
  * 익명클래스를 사용해서 클래스 선언과 인스턴스 생성을 동시에 처리할 수 있다.
+ * <p>
+ * 하지만, 여전히 문제가 있다. 코드가 너무 장황해진다는 점이다.
+ * 이를 해결하기 위해 람다 표현식을 활용할 수 있다.
  */
 public class FilteringApples {
     public static List<Apple> filterGreenApples(List<Apple> inventory) {
