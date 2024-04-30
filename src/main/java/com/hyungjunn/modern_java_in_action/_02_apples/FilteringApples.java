@@ -29,4 +29,14 @@ public class FilteringApples {
         }
         return result;
     }
+
+    public static List<Apple> filterApplesByWeight(List<Apple> inventory, int weight) {
+        List<Apple> result = new ArrayList<>();
+        for (Apple apple : inventory) {
+            if (apple.isWeightAbove(weight)) {
+                result.add(apple);
+            }
+        }
+        return result;
+    }
 }

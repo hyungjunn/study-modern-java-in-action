@@ -36,4 +36,16 @@ public class FilteringApplesTest {
         List<Apple> redApples = FilteringApples.filterApplesByColor(inventory, RED);
         assertThat(redApples).hasSize(1);
     }
+
+    @Test
+    void filterApplesByWeight() {
+        List<Apple> inventory = Arrays.asList(
+                new Apple(80, GREEN),
+                new Apple(155, GREEN),
+                new Apple(120, RED)
+        );
+
+        List<Apple> greenApples = FilteringApples.filterApplesByWeight(inventory, 150);
+        assertThat(greenApples).hasSize(1);
+    }
 }

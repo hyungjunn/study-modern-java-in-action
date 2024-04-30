@@ -16,4 +16,8 @@ public class Apple {
     public Color getColor() {
         return color;
     }
+
+    public boolean isWeightAbove(int weight) {
+        return this.weight > weight;
+    }
 }

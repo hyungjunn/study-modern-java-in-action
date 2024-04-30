@@ -11,4 +11,11 @@ public class AppleTest {
 
         assertThat(isGreen).isTrue();
     }
+
+    @Test
+    void isWeightAbove() {
+        boolean isWeightAbove = new Apple(100, Color.GREEN).isWeightAbove(150);
+
+        assertThat(isWeightAbove).isFalse();
+    }
 }
