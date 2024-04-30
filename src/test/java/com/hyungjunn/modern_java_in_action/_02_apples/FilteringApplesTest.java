@@ -2,6 +2,7 @@ package com.hyungjunn.modern_java_in_action._02_apples;
 
 import com.hyungjunn.modern_java_in_action._02_apples.strategy.AppleGreenColorPredicate;
 import com.hyungjunn.modern_java_in_action._02_apples.strategy.AppleHeavyWeightPredicate;
+import com.hyungjunn.modern_java_in_action._02_apples.strategy.AppleRedColorAndLightPredicate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -64,5 +65,11 @@ public class FilteringApplesTest {
     void filterApplesByAppleHeavyWeightPredicate() {
         List<Apple> greenApples = FilteringApples.filterApples(inventory, new AppleHeavyWeightPredicate());
         assertThat(greenApples).hasSize(1);
+    }
+
+    @Test
+    void filterApplesByAppleRedColorAndLightWeightPredicate() {
+        List<Apple> redAndLightApples = FilteringApples.filterApples(inventory, new AppleRedColorAndLightPredicate());
+        assertThat(redAndLightApples).hasSize(1 );
     }
 }

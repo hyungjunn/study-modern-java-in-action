@@ -24,4 +24,8 @@ public class Apple {
     public boolean isWeightAbove(int weight) {
         return this.weight > weight;
     }
+
+    public boolean isRed() {
+        return this.color.isRed();
+    }
 }

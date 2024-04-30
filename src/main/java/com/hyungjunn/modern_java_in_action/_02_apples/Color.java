@@ -7,4 +7,8 @@ public enum Color {
     public boolean isGreen() {
         return this == GREEN;
     }
+
+    public boolean isRed() {
+        return this == RED;
+    }
 }

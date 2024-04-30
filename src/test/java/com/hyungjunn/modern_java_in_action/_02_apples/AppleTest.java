@@ -33,4 +33,11 @@ public class AppleTest {
 
         assertThat(sameColor).isTrue();
     }
+
+    @Test
+    void isRed() {
+        boolean isRed = apple.isRed();
+
+        assertThat(isRed).isFalse();
+    }
 }
