@@ -13,6 +13,10 @@ public class Apple {
         return color.isGreen();
     }
 
+    public boolean isSameColor(Color color) {
+        return this.color == color;
+    }
+
     public Color getColor() {
         return color;
     }
