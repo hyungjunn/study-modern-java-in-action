@@ -38,3 +38,7 @@
 
 * [학습 내용](https://github.com/hyungjunn/study-modern-java-in-action/pull/1)
 
+## chapter 3. 람다 표현식
+
+람다 표현식에 대해 중점적으로 배운다.
+
