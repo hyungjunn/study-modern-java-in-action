@@ -26,4 +26,16 @@ public class BufferReaderTest {
 
         System.out.println(twoLines);
     }
+
+    @Test
+    void processFile3() throws IOException {
+        String oneLine = processFile(new BufferedReaderProcessor() {
+            @Override
+            public String process(BufferedReader br) throws IOException {
+                return br.readLine();
+            }
+        });
+
+        System.out.println(oneLine);
+    }
 }
