@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.function.BiFunction;
 import java.util.function.Supplier;
+import java.util.function.ToIntBiFunction;
 import java.util.function.UnaryOperator;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -30,6 +31,14 @@ public class FunctionalInterfaceTest {
         // 두 사과의 무게를 비교하는 로직
         BiFunction<Apple, Apple, Integer> adder = (apple1, apple2) -> Integer.max(apple1.getWeight(), apple2.getWeight());
         int result = adder.apply(new Apple(300, Color.RED), new Apple(400, Color.RED));
+        assertThat(result).isEqualTo(400);
+    }
+
+    @Test
+    void testToIntBiFunction() {
+        // 위의 로직을 ToIntBiFunction 으로 간단히 나타낼 수 있다
+        ToIntBiFunction<Apple, Apple> adder = (apple1, apple2) -> Integer.max(apple1.getWeight(), apple2.getWeight());
+        int result = adder.applyAsInt(new Apple(300, Color.RED), new Apple(400, Color.RED));
         assertThat(result).isEqualTo(400);
     }
 
