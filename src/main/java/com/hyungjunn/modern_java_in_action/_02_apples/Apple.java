@@ -4,6 +4,14 @@ public class Apple {
     private final int weight;
     private final Color color;
 
+    public Apple() {
+        this(0);
+    }
+
+    public Apple(Integer integer) {
+        this(integer, null);
+    }
+
     public Apple(int weight, Color color) {
         this.weight = weight;
         this.color = color;

@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class FunctionTest {
     // T 타입의 입력을 받아, R 타입의 결과를 반환하는 메서드
-    private <T, R> List<R> map(List<T> list, Function<T, R> f) {
+    public static <T, R> List<R> map(List<T> list, Function<T, R> f) {
         List<R> result = new ArrayList<>();
         for (T t : list) {
             result.add(f.apply(t));
