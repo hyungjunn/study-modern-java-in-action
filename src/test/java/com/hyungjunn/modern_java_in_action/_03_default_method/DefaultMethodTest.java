@@ -9,9 +9,9 @@ import org.junit.jupiter.params.provider.CsvSource;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
 
-import static com.hyungjunn.modern_java_in_action._02_apples.Color.GREEN;
-import static com.hyungjunn.modern_java_in_action._02_apples.Color.RED;
+import static com.hyungjunn.modern_java_in_action._02_apples.Color.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class DefaultMethodTest {
@@ -50,4 +50,24 @@ public class DefaultMethodTest {
         assertThat(inventory.get(input).getCountry()).isEqualTo(expected);
         System.out.println("inventory = " + inventory);
     }
+
+    @Test
+    void testNegate() {
+        List<Apple> inventory = Arrays.asList(
+                new Apple(80, GREEN),
+                new Apple(155, GREEN),
+                new Apple(120, RED),
+                new Apple(120, ORANGE)
+        );
+
+        Predicate<Apple> redApple = Apple::isRed;
+        Predicate<Apple> notRedApple = redApple.negate();
+
+        long count = inventory.stream()
+                .filter(notRedApple)
+                .count();
+
+        assertThat(count).isEqualTo(3L);
+    }
+
 }
