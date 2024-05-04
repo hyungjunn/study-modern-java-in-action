@@ -5,7 +5,6 @@ import com.hyungjunn.modern_java_in_action._02_apples.Color;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Function;
