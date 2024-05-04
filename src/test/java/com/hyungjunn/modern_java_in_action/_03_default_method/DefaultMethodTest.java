@@ -1,6 +1,8 @@
 package com.hyungjunn.modern_java_in_action._03_default_method;
 
 import com.hyungjunn.modern_java_in_action._02_apples.Apple;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -25,5 +27,27 @@ public class DefaultMethodTest {
         inventory.sort(Comparator.comparing(Apple::getWeight).reversed());
 
         assertThat(inventory.get(input).getWeight()).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"0:busan", "1:daegu", "2:jeju"}, delimiter = ':')
+    void testThenComparing(int input, String expected) {
+        List<Apple> inventory = Arrays.asList(
+                new Apple(80, GREEN, "daegu"),
+                new Apple(80, GREEN, "busan"),
+                new Apple(80, GREEN, "jeju")
+        );
+        // 위에 처럼 무게를 내림차순으로 정렬
+        // 그 때, 무게가 같다면 국가별로 정렬
+        inventory.sort(
+                Comparator.comparing(Apple::getWeight)
+                        .reversed()
+                        .thenComparing(Apple::getCountry)
+        );
+
+        // 155 120 80
+        // busan daegu jeju
+        assertThat(inventory.get(input).getCountry()).isEqualTo(expected);
+        System.out.println("inventory = " + inventory);
     }
 }
