@@ -23,4 +23,12 @@ public class StreamBasicTest {
         assertThat(lowCaloricDishesName.size()).isEqualTo(2);
         assertThat(lowCaloricDishesName).containsExactly("season fruit", "rice");
     }
+
+    @Test
+    void testOrderLowCaloricDishesNamesInParallelStream() {
+        List<String> lowCaloricDishesName = Order.OrderLowCaloricDishesNamesInParallelStream(menu);
+
+        assertThat(lowCaloricDishesName.size()).isEqualTo(2);
+        assertThat(lowCaloricDishesName).containsExactly("season fruit", "rice");
+    }
 }

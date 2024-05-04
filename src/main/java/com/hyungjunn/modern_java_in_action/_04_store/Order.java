@@ -44,4 +44,12 @@ public class Order {
                 .map(Dish::getName)
                 .collect(toList());
     }
+
+    public static List<String> OrderLowCaloricDishesNamesInParallelStream(List<Dish> menu) {
+        return menu.parallelStream()
+                .filter(it -> it.getCalories() < 400)
+                .sorted(comparing(Dish::getCalories))
+                .map(Dish::getName)
+                .collect(toList());
+    }
 }
