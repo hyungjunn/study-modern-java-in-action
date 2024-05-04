@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 import static com.hyungjunn.modern_java_in_action._02_apples.Color.*;
@@ -88,5 +89,14 @@ public class DefaultMethodTest {
                 .count();
 
         assertThat(count).isEqualTo(1L);
+    }
+
+    @Test
+    void andThen() {
+        Function<Integer, Integer> f = x -> x + 1;
+        Function<Integer, Integer> g = x -> x * 2;
+        Function<Integer, Integer> h = f.andThen(g);
+
+        assertThat(h.apply(1)).isEqualTo(4);
     }
 }
