@@ -5,6 +5,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import static java.util.Comparator.comparing;
+import static java.util.stream.Collectors.toList;
+
 public class Order {
     public static List<String> orderLowCaloricDishesNamesInJava7(List<Dish> menu) {
         List<Dish> lowCaloricDishes = new ArrayList<>();
@@ -32,5 +35,13 @@ public class Order {
 
         }
         return lowCaloricDishesName;
+    }
+
+    public static List<String> orderLowCaloricDishesNamesInJava8(List<Dish> menu) {
+        return menu.stream()
+                .filter(it -> it.getCalories() < 400)
+                .sorted(comparing(Dish::getCalories))
+                .map(Dish::getName)
+                .collect(toList());
     }
 }

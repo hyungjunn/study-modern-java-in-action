@@ -15,4 +15,12 @@ public class StreamBasicTest {
         assertThat(lowCaloricDishesName.size()).isEqualTo(2);
         assertThat(lowCaloricDishesName).containsExactly("season fruit", "rice");
     }
+
+    @Test
+    void testOrderLowCaloricDishesNamesInJava8() {
+        List<String> lowCaloricDishesName = Order.orderLowCaloricDishesNamesInJava8(menu);
+
+        assertThat(lowCaloricDishesName.size()).isEqualTo(2);
+        assertThat(lowCaloricDishesName).containsExactly("season fruit", "rice");
+    }
 }
