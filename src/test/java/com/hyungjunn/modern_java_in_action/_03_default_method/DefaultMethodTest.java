@@ -70,4 +70,23 @@ public class DefaultMethodTest {
         assertThat(count).isEqualTo(3L);
     }
 
+    @Test
+    void testAndOr() {
+        List<Apple> inventory = Arrays.asList(
+                new Apple(80, GREEN),
+                new Apple(155, GREEN),
+                new Apple(120, RED),
+                new Apple(120, ORANGE)
+        );
+
+        Predicate<Apple> redApple = Apple::isRed;
+        Predicate<Apple> notRedApple = redApple.negate();
+        Predicate<Apple> notRedAndHeavyApple = notRedApple.and(apple -> apple.isWeightAbove(150));
+
+        long count = inventory.stream()
+                .filter(notRedAndHeavyApple)
+                .count();
+
+        assertThat(count).isEqualTo(1L);
+    }
 }
