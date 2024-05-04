@@ -2,7 +2,8 @@ package com.hyungjunn.modern_java_in_action._02_apples;
 
 public enum Color {
     RED,
-    GREEN;
+    GREEN,
+    ORANGE;
 
     public boolean isGreen() {
         return this == GREEN;
