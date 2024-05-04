@@ -31,4 +31,12 @@ public class StreamBasicTest {
         assertThat(lowCaloricDishesName.size()).isEqualTo(2);
         assertThat(lowCaloricDishesName).containsExactly("season fruit", "rice");
     }
+
+    @Test
+    void testOrderThreeHighCaloricDishesName() {
+        List<String> threeHighCaloricDishesName = Order.orderThreeHighCaloricDishesName(menu);
+
+        assertThat(threeHighCaloricDishesName).hasSize(3);
+        assertThat(threeHighCaloricDishesName).containsExactly("pork", "beef", "chicken");
+    }
 }

@@ -52,4 +52,12 @@ public class Order {
                 .map(Dish::getName)
                 .collect(toList());
     }
+
+    public static List<String> orderThreeHighCaloricDishesName(List<Dish> menu) {
+        return menu.stream()
+                .filter(it -> it.getCalories() > 300)
+                .map(Dish::getName)
+                .limit(3)
+                .collect(toList());
+    }
 }
