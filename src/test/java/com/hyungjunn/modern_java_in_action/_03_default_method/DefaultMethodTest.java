@@ -99,4 +99,13 @@ public class DefaultMethodTest {
 
         assertThat(h.apply(1)).isEqualTo(4);
     }
+
+    @Test
+    void compose() {
+        Function<Integer, Integer> f = x -> x + 1;
+        Function<Integer, Integer> g = x -> x * 2;
+        Function<Integer, Integer> h = f.compose(g);
+
+        assertThat(h.apply(1)).isEqualTo(3);
+    }
 }
