@@ -1,11 +1,13 @@
 package com.hyungjunn.modern_java_in_action._05_store2;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.Set;
 
 import static com.hyungjunn.modern_java_in_action._05_store2.Transactions.transactions;
+import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class PracticalPracticeTest {
@@ -35,5 +37,12 @@ public class PracticalPracticeTest {
         List<Trader> tradersInCambridge = TransactionCalculator.arrangeTraderInCambridge(transactions);
 
         assertThat(tradersInCambridge).hasSize(3);
+    }
+
+    @Test
+    void practice4() {
+        String traderName = TransactionCalculator.arrangeTraderNamesByABC(transactions);
+
+        assertThat(traderName).isEqualTo("AlanBrianMarioRaoul");
     }
 }

@@ -3,7 +3,9 @@ package com.hyungjunn.modern_java_in_action._05_store2;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.*;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toSet;
 
@@ -36,5 +38,14 @@ public class TransactionCalculator {
                 .distinct()
                 .sorted(Comparator.comparing(Trader::getName))
                 .collect(toList());
+    }
+
+    public static String arrangeTraderNamesByABC(List<Transaction> transactions) {
+        return transactions.stream()
+                .map(it -> it.getTrader().getName())
+                .distinct()
+                .sorted()
+                //.reduce("", (n1, n2) -> n1 + n2);
+                .collect(joining());
     }
 }
