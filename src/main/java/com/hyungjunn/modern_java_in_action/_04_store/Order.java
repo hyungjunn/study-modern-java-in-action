@@ -80,4 +80,11 @@ public class Order {
                 .map(Dish::getName) // map 메서드를 getName 메서드로 파라미터화해서 요리명을 추출한다
                 .collect(toList()); // 파이프라인을 실행한다. 반복자는 필요 없다.
     }
+
+    public static List<String> orderHighCaloriesDishes(List<Dish> menu) {
+        return menu.stream()
+                .filter(it -> it.getCalories() > 300)
+                .map(Dish::getName)
+                .collect(toList());
+    }
 }
