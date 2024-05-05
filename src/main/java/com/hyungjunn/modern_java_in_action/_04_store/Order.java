@@ -3,6 +3,7 @@ package com.hyungjunn.modern_java_in_action._04_store;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 
 import static java.util.Comparator.comparing;
@@ -59,5 +60,24 @@ public class Order {
                 .map(Dish::getName)
                 .limit(3)
                 .collect(toList());
+    }
+
+    public static List<String> externalIteration(List<Dish> menu) {
+        List<String> names = new ArrayList<>();
+        for (Dish dish : menu) {
+            names.add(dish.getName());
+        }
+        //Iterator<Dish> iterator = menu.iterator();
+        //while (iterator.hasNext()) {
+        //    Dish dish = iterator.next();
+        //    names.add(dish.getName());
+        //}
+        return names;
+    }
+
+    public static List<String> internalIteration(List<Dish> menu) {
+        return menu.stream()
+                .map(Dish::getName) // map 메서드를 getName 메서드로 파라미터화해서 요리명을 추출한다
+                .collect(toList()); // 파이프라인을 실행한다. 반복자는 필요 없다.
     }
 }

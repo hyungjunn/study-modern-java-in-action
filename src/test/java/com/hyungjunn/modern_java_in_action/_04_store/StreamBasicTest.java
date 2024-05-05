@@ -1,8 +1,11 @@
 package com.hyungjunn.modern_java_in_action._04_store;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static com.hyungjunn.modern_java_in_action._04_store.DishTest.menu;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -38,5 +41,26 @@ public class StreamBasicTest {
 
         assertThat(threeHighCaloricDishesName).hasSize(3);
         assertThat(threeHighCaloricDishesName).containsExactly("pork", "beef", "chicken");
+    }
+
+    @Test
+    void testForEach() {
+        List<String> title = Arrays.asList("Java8", "In", "Action");
+        Stream<String> stream = title.stream();
+        stream.forEach(System.out::println);
+        //stream.forEach(System.out::println); // message: stream has already been operated upon or closed
+    }
+
+    @Test
+    void testExternalIteration() {
+        List<String> names = Order.externalIteration(menu);
+
+        assertThat(names).hasSize(9);
+    }
+
+    @Test
+    void testInternalIteration() {
+        List<String> names = Order.internalIteration(menu);
+        assertThat(names).hasSize(9);
     }
 }
