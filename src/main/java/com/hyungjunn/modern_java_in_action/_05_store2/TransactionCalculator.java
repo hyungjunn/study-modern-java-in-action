@@ -69,4 +69,10 @@ public class TransactionCalculator {
                 .map(Transaction::getValue)
                 .reduce(Integer::max);
     }
+
+    public static Optional<Integer> minValue(List<Transaction> transactions) {
+        return transactions.stream()
+                .map(Transaction::getValue)
+                .reduce(Integer::min);
+    }
 }

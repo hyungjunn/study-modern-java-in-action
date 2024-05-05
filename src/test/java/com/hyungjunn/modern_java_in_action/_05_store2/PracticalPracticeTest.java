@@ -66,4 +66,12 @@ public class PracticalPracticeTest {
 
         assertThat(maxValue).isEqualTo(1000);
     }
+
+    @Test
+    void practice8() {
+        Integer minValue = TransactionCalculator.minValue(transactions)
+                .orElseThrow();
+
+        assertThat(minValue).isEqualTo(300);
+    }
 }
