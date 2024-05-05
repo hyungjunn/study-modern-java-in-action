@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import static com.hyungjunn.modern_java_in_action._05_store2.Transactions.transactions;
@@ -56,5 +57,13 @@ public class PracticalPracticeTest {
     @Test
     void practice6() {
         TransactionCalculator.printTransactionByCambridgeTrader(transactions);
+    }
+
+    @Test
+    void practice7() {
+        Integer maxValue = TransactionCalculator.maxValue(transactions)
+                .orElseThrow();
+
+        assertThat(maxValue).isEqualTo(1000);
     }
 }

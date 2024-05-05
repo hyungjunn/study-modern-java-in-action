@@ -2,6 +2,7 @@ package com.hyungjunn.modern_java_in_action._05_store2;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -61,5 +62,11 @@ public class TransactionCalculator {
                 .filter(it -> it.getTrader().getCity().equals("Cambridge"))
                 .map(Transaction::getValue)
                 .forEach(System.out::println);
+    }
+
+    public static Optional<Integer> maxValue(List<Transaction> transactions) {
+        return transactions.stream()
+                .map(Transaction::getValue)
+                .reduce(Integer::max);
     }
 }
