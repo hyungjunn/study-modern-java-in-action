@@ -47,3 +47,5 @@
 ## chapter 4. 스트림 소개
 
 스트림이 무엇인지에 대해 배운다.
+
+* [학습 내용]( https://github.com/hyungjunn/study-modern-java-in-action/pull/3 )
