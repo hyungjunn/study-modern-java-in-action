@@ -8,4 +8,8 @@ public class Trader {
         this.name = name;
         this.city = city;
     }
+
+    public String getCity() {
+        return city;
+    }
 }

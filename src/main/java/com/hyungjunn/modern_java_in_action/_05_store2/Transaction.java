@@ -14,4 +14,8 @@ public class Transaction {
     public int getYear() {
         return year;
     }
+
+    public Trader getTrader() {
+        return trader;
+    }
 }
