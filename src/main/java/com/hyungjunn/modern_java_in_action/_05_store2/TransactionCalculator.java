@@ -55,4 +55,11 @@ public class TransactionCalculator {
                         .getCity()
                         .equals("Milan"));
     }
+
+    public static void printTransactionByCambridgeTrader(List<Transaction> transactions) {
+        transactions.stream()
+                .filter(it -> it.getTrader().getCity().equals("Cambridge"))
+                .map(Transaction::getValue)
+                .forEach(System.out::println);
+    }
 }

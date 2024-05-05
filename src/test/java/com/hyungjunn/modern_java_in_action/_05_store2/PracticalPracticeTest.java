@@ -52,4 +52,9 @@ public class PracticalPracticeTest {
 
         assertThat(isTraderInMilan).isTrue();
     }
+
+    @Test
+    void practice6() {
+        TransactionCalculator.printTransactionByCambridgeTrader(transactions);
+    }
 }

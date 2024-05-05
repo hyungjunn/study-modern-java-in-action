@@ -18,4 +18,8 @@ public class Transaction {
     public Trader getTrader() {
         return trader;
     }
+
+    public int getValue() {
+        return value;
+    }
 }
