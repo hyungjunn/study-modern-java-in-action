@@ -45,4 +45,11 @@ public class PracticalPracticeTest {
 
         assertThat(traderName).isEqualTo("AlanBrianMarioRaoul");
     }
+
+    @Test
+    void practice5() {
+        boolean isTraderInMilan = TransactionCalculator.isTraderInMilan(transactions);
+
+        assertThat(isTraderInMilan).isTrue();
+    }
 }

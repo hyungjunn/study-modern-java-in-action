@@ -48,4 +48,11 @@ public class TransactionCalculator {
                 //.reduce("", (n1, n2) -> n1 + n2);
                 .collect(joining());
     }
+
+    public static boolean isTraderInMilan(List<Transaction> transactions) {
+        return transactions.stream()
+                .anyMatch(it -> it.getTrader()
+                        .getCity()
+                        .equals("Milan"));
+    }
 }
