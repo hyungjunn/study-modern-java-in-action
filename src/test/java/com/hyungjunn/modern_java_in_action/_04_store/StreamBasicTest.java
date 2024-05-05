@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import static com.hyungjunn.modern_java_in_action._04_store.DishTest.menu;
+import static java.util.stream.Collectors.toList;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class StreamBasicTest {
@@ -62,5 +63,22 @@ public class StreamBasicTest {
     void testInternalIteration() {
         List<String> names = Order.internalIteration(menu);
         assertThat(names).hasSize(9);
+    }
+
+    @Test
+    void testIntermediateOperation() {
+        List<String> names = menu.stream()
+                .filter(dish -> {
+                    System.out.println("filtering: " + dish.getName());
+                    return dish.getCalories() > 300;
+                })
+                .map(dish -> {
+                    System.out.println("mapping: " + dish.getName());
+                    return dish.getName();
+                })
+                .limit(3)
+                .toList();
+
+        System.out.println("names = " + names);
     }
 }
