@@ -16,4 +16,11 @@ public class StreamTest {
 
         Assertions.assertThat(vegetarianDishes).hasSize(4);
     }
+
+    @Test
+    void testInternalIteration() {
+        List<Dish> vegetarianDishes = Order.orderVegetarianByInternal(menu);
+
+        Assertions.assertThat(vegetarianDishes).hasSize(4);
+    }
 }

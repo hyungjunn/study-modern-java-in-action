@@ -96,4 +96,10 @@ public class Order {
         }
         return vegetarianDishes;
     }
+
+    public static List<Dish> orderVegetarianByInternal(List<Dish> menu) {
+        return menu.stream()
+                .filter(Dish::isVegetarian)
+                .collect(toList());
+    }
 }
