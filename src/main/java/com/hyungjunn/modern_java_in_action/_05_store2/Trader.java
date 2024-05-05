@@ -12,4 +12,8 @@ public class Trader {
     public String getCity() {
         return city;
     }
+
+    public String getName() {
+        return name;
+    }
 }

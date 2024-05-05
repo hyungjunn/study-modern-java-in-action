@@ -29,4 +29,11 @@ public class PracticalPracticeTest {
 
         assertThat(cities).hasSize(2);
     }
+
+    @Test
+    void practice3() {
+        List<Trader> tradersInCambridge = TransactionCalculator.arrangeTraderInCambridge(transactions);
+
+        assertThat(tradersInCambridge).hasSize(3);
+    }
 }

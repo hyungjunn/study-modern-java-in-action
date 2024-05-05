@@ -28,4 +28,13 @@ public class TransactionCalculator {
                 .map(t -> t.getTrader().getCity())
                 .collect(toSet());
     }
+
+    public static List<Trader> arrangeTraderInCambridge(List<Transaction> transactions) {
+        return transactions.stream()
+                .map(Transaction::getTrader)
+                .filter(trader -> trader.getCity().equals("Cambridge"))
+                .distinct()
+                .sorted(Comparator.comparing(Trader::getName))
+                .collect(toList());
+    }
 }
