@@ -3,7 +3,6 @@ package com.hyungjunn.modern_java_in_action._04_store;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
 
 import static java.util.Comparator.comparing;
@@ -86,5 +85,15 @@ public class Order {
                 .filter(it -> it.getCalories() > 300)
                 .map(Dish::getName)
                 .collect(toList());
+    }
+
+    public static List<Dish> orderVegetarianByExternal(List<Dish> menu) {
+        List<Dish> vegetarianDishes = new ArrayList<>();
+        for (Dish dish : menu) {
+            if (dish.isVegetarian()) {
+                vegetarianDishes.add(dish);
+            }
+        }
+        return vegetarianDishes;
     }
 }
