@@ -102,4 +102,23 @@ public class Order {
                 .filter(Dish::isVegetarian)
                 .collect(toList());
     }
+
+    public static List<Dish> filterLessThanCalories(List<Dish> menu) {
+        return menu.stream()
+                .filter(it -> it.getCalories() < 350)
+                .collect(toList());
+    }
+
+    public static List<Dish> filterLessThanCaloriesByTakeWhile(List<Dish> menu) {
+        // in java 9
+        // takeWhile
+        // 칼로리 순으로 menu 가 정렬되어 있다고 가정하자
+        // 위의 filter 를 쓰면 모든 요소에 프레디케이트를 적용해야한다
+        // 그러나, takeWhile 같이 슬라이싱 기법을 쓰면
+        // 아래에 주어진 값인 350 보다 크거나 같은 값이 나온다면
+        // 반복 작업을 중단한다
+        return menu.stream()
+                .takeWhile(it -> it.getCalories() < 350)
+                .collect(toList());
+    }
 }

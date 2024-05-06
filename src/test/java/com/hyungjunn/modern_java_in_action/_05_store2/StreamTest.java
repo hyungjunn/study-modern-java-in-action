@@ -2,12 +2,14 @@ package com.hyungjunn.modern_java_in_action._05_store2;
 
 import com.hyungjunn.modern_java_in_action._04_store.Dish;
 import com.hyungjunn.modern_java_in_action._04_store.Order;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static com.hyungjunn.modern_java_in_action._04_store.DishTest.menu;
+import static com.hyungjunn.modern_java_in_action._04_store.DishTest.specialMenu;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class StreamTest {
@@ -36,5 +38,19 @@ public class StreamTest {
         assertThat(distinctEvenNumbers).hasSize(2);
         assertThat(distinctEvenNumbers.get(0)).isEqualTo(2);;
         assertThat(distinctEvenNumbers.get(1)).isEqualTo(4);;
+    }
+
+    @Test
+    void testFilter() {
+        List<Dish> filteredMenu = Order.filterLessThanCalories(specialMenu);
+
+        assertThat(filteredMenu).hasSize(2);
+    }
+
+    @Test
+    void testTakeWhile() {
+        List<Dish> slicedMenu1 = Order.filterLessThanCaloriesByTakeWhile(specialMenu);
+
+        assertThat(slicedMenu1).hasSize(2);
     }
 }
