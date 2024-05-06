@@ -140,4 +140,34 @@ public class StreamTest {
 
         assertThat(list).containsExactly("H", "e", "l", "o", "W", "r", "d");
     }
+
+    @Test
+    void testQuiz_5_2() {
+        // 1
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+        List<Integer> squares = numbers.stream()
+                .map(x -> x * x)
+                .toList();
+
+        assertThat(squares).containsExactly(1, 4, 9, 16, 25);
+
+        // 2
+        List<Integer> numbers1 = Arrays.asList(1, 2, 3);
+        List<Integer> numbers2 = Arrays.asList(3, 4);
+        List<int[]> pairs = numbers1.stream()
+                .flatMap(i -> numbers2.stream()
+                        .map(j -> new int[]{i, j}))
+                .toList();
+
+        assertThat(pairs).hasSize(6);
+
+        // 3
+        List<int[]> pairsMultiplesOfThree = numbers1.stream()
+                .flatMap(i -> numbers2.stream()
+                        .filter(j -> (i + j) % 3 == 0)
+                        .map(j -> new int[]{i, j}))
+                .toList();
+
+        assertThat(pairsMultiplesOfThree).hasSize(2);
+    }
 }
