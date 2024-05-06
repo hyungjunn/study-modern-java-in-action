@@ -143,4 +143,11 @@ public class Order {
                 .skip(2)
                 .collect(toList());
     }
+
+    public static List<Dish> filterToMeatAndLimitTwo(List<Dish> menu) {
+        return menu.stream()
+                .filter(Dish::isMeat)
+                .limit(2)
+                .collect(toList());
+    }
 }

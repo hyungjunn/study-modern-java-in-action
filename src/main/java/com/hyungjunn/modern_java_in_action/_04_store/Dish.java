@@ -24,4 +24,8 @@ public class Dish {
     public boolean isVegetarian() {
         return vegetarian;
     }
+
+    public boolean isMeat() {
+        return type == Type.MEAT;
+    }
 }

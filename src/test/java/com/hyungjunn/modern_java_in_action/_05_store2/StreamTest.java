@@ -74,4 +74,11 @@ public class StreamTest {
 
         assertThat(dishes).hasSize(6);
     }
+
+    @Test
+    void testQuiz_5_1() {
+        List<Dish> meatDishes = Order.filterToMeatAndLimitTwo(menu);
+
+        assertThat(meatDishes).hasSize(2);
+    }
 }
