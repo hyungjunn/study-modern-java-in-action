@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static com.hyungjunn.modern_java_in_action._04_store.DishTest.menu;
 import static com.hyungjunn.modern_java_in_action._04_store.DishTest.specialMenu;
@@ -192,5 +193,37 @@ public class StreamTest {
                 .noneMatch(dish -> dish.getCalories() >= 1000);
 
         assertThat(isHealthy).isTrue();
+    }
+
+    @Test
+    void testFindAny() {
+        Optional<Dish> dish = menu.stream()
+                .filter(Dish::isVegetarian)
+                .findAny();
+
+        // isVegetarian 인 걸 찾았으면 끝 => 쇼트서킷 평가
+        assertThat(dish.get().getCalories()).isEqualTo(530);
+    }
+
+    @Test
+    void testFindAnyIfPresent() {
+        menu.stream()
+                .filter(Dish::isVegetarian)
+                .findAny()
+                .ifPresent(it -> System.out.println(it.getName())); // french fries
+    }
+
+    @Test
+    void testFindFirst() {
+        // 숫자 리스트에서 3으로 나누어 떨어지는 첫 번째 제곱값을 반환하는 코드를 테스트하라
+        // 병렬성을 띄는 경우에는 findFirst 보다는 제약이 적은 findAny 를 쓰게 된다.
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+        Integer number = numbers.stream()
+                .map(x -> x * x)
+                .filter(y -> y % 3 == 0)
+                .findFirst()
+                .orElseThrow();
+
+        assertThat(number).isEqualTo(9);
     }
 }
