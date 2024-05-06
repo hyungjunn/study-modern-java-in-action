@@ -170,4 +170,27 @@ public class StreamTest {
 
         assertThat(pairsMultiplesOfThree).hasSize(2);
     }
+
+    @Test
+    void testAnyMatch() {
+        boolean isVegetarianAnyMatch = menu.stream().anyMatch(Dish::isVegetarian);
+        assertThat(isVegetarianAnyMatch).isTrue();
+    }
+
+    @Test
+    void testAllMatch() {
+        boolean isHealthy = menu.stream()
+                .allMatch(dish -> dish.getCalories() < 1000);
+
+        assertThat(isHealthy).isTrue();
+    }
+
+    @Test
+    void testNoneMatch() {
+        // noneMatch 는 allMatch 와 반대 연산을 수행한다
+        boolean isHealthy = menu.stream()
+                .noneMatch(dish -> dish.getCalories() >= 1000);
+
+        assertThat(isHealthy).isTrue();
+    }
 }
