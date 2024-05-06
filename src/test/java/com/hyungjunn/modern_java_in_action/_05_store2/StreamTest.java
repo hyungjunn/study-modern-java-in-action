@@ -248,4 +248,15 @@ public class StreamTest {
                 .orElseThrow();
         assertThat(sumByOverrideReduce).isEqualTo(15);
     }
+
+    @Test
+    void testQuiz_5_3() {
+        // map 과 reduce 메서드를 이용해서 스트림의 요리 갯수를 계산하시오.
+        // 갯수를 구할 때, 아주 유용한 방식
+        // 맵-리듀스 패턴: 쉽게 병렬화하게 되어 구글이 이 방식으로 웹 검색에 적용하면서 유명해짐 
+        int dishesNo = menu.stream()
+                .map(it -> 1)
+                .reduce(0, Integer::sum);
+        Assertions.assertThat(dishesNo).isEqualTo(9);
+    }
 }
