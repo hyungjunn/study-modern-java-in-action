@@ -2,25 +2,39 @@ package com.hyungjunn.modern_java_in_action._05_store2;
 
 import com.hyungjunn.modern_java_in_action._04_store.Dish;
 import com.hyungjunn.modern_java_in_action._04_store.Order;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static com.hyungjunn.modern_java_in_action._04_store.DishTest.menu;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class StreamTest {
     @Test
     void testExternalIteration() {
         List<Dish> vegetarianDishes = Order.orderVegetarianByExternal(menu);
 
-        Assertions.assertThat(vegetarianDishes).hasSize(4);
+        assertThat(vegetarianDishes).hasSize(4);
     }
 
     @Test
     void testInternalIteration() {
         List<Dish> vegetarianDishes = Order.orderVegetarianByInternal(menu);
 
-        Assertions.assertThat(vegetarianDishes).hasSize(4);
+        assertThat(vegetarianDishes).hasSize(4);
+    }
+
+    @Test
+    void testDistinct() {
+        List<Integer> numbers = Arrays.asList(1, 2, 1, 3, 3, 2, 4, 1, 1, 1, 1);
+        List<Integer> distinctEvenNumbers = numbers.stream()
+                .filter(i -> i % 2 == 0)
+                .distinct()
+                .toList();
+
+        assertThat(distinctEvenNumbers).hasSize(2);
+        assertThat(distinctEvenNumbers.get(0)).isEqualTo(2);;
+        assertThat(distinctEvenNumbers.get(1)).isEqualTo(4);;
     }
 }
