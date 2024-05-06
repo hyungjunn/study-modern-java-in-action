@@ -53,4 +53,11 @@ public class StreamTest {
 
         assertThat(slicedMenu1).hasSize(2);
     }
+
+    @Test
+    void testDropWhile() {
+        List<Dish> slicedMenu2 = Order.filterLessThanCaloriesByDropWhile(specialMenu);
+
+        assertThat(slicedMenu2).hasSize(3);
+    }
 }

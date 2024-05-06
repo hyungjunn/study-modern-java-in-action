@@ -121,4 +121,11 @@ public class Order {
                 .takeWhile(it -> it.getCalories() < 350)
                 .collect(toList());
     }
+
+    public static List<Dish> filterLessThanCaloriesByDropWhile(List<Dish> menu) {
+        // dropWhile 은 takeWhile 의 정반대 작업
+        return menu.stream()
+                .dropWhile(it -> it.getCalories() < 350)
+                .collect(toList());
+    }
 }
