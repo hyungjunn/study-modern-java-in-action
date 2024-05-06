@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -278,5 +279,15 @@ public class StreamTest {
         Stream<Integer> stream = intStream.boxed();
         List<Integer> list = stream.toList();
         assertThat(list).hasSize(9);
+    }
+
+    @Test
+    void testOptionalInt() {
+        int maxCalories = menu.stream()
+                .mapToInt(Dish::getCalories)
+                .max()
+                .orElse(1); // 최댓값이 없는 상황에 사용할 기본값을 정의할 수 있음
+
+        assertThat(maxCalories).isEqualTo(800);
     }
 }
