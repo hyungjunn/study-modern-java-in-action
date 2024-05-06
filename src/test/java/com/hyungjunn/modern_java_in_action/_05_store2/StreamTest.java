@@ -8,11 +8,14 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import static com.hyungjunn.modern_java_in_action._04_store.DishTest.menu;
 import static com.hyungjunn.modern_java_in_action._04_store.DishTest.specialMenu;
 import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.toList;
+import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class StreamTest {
@@ -253,10 +256,27 @@ public class StreamTest {
     void testQuiz_5_3() {
         // map 과 reduce 메서드를 이용해서 스트림의 요리 갯수를 계산하시오.
         // 갯수를 구할 때, 아주 유용한 방식
-        // 맵-리듀스 패턴: 쉽게 병렬화하게 되어 구글이 이 방식으로 웹 검색에 적용하면서 유명해짐 
+        // 맵-리듀스 패턴: 쉽게 병렬화하게 되어 구글이 이 방식으로 웹 검색에 적용하면서 유명해짐
         int dishesNo = menu.stream()
                 .map(it -> 1)
                 .reduce(0, Integer::sum);
-        Assertions.assertThat(dishesNo).isEqualTo(9);
+        assertThat(dishesNo).isEqualTo(9);
+    }
+
+    @Test
+    void testIntStream() {
+        int calories = menu.stream()
+                .mapToInt(Dish::getCalories)
+                .sum();
+
+        assertThat(calories).isEqualTo(4300);
+    }
+
+    @Test
+    void testIntStreamToStream() {
+        IntStream intStream = menu.stream().mapToInt(Dish::getCalories);
+        Stream<Integer> stream = intStream.boxed();
+        List<Integer> list = stream.toList();
+        assertThat(list).hasSize(9);
     }
 }
