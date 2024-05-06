@@ -107,4 +107,37 @@ public class StreamTest {
 
         assertThat(dishNamesLengths).containsExactly(4, 5, 6, 7, 12);
     }
+
+    @Test
+    void testMap3() {
+        List<String> words = Arrays.asList("Hello", "World");
+
+        words.stream()
+                .map(it -> {
+                    System.out.println(Arrays.toString(it.split("")));
+                    return it.split(""); // 나는 H e l l o W o r l d 를 mapping 하고 싶은데 현실은 [H,e,l,l,o], [W,o,r,l,d]
+                })
+                .distinct()
+                .toList();
+
+        List<String> list = words.stream()
+                .flatMap(line -> Arrays.stream(line.split("")))
+                .distinct()
+                .toList();
+
+        assertThat(list).containsExactly("H", "e", "l", "o", "W", "r", "d");
+    }
+
+    @Test
+    void testMap4() {
+        List<String> words = Arrays.asList("Hello", "World");
+
+        List<String> list = words.stream()
+                .map(word -> word.split(""))
+                .flatMap(Arrays::stream)
+                .distinct()
+                .toList();
+
+        assertThat(list).containsExactly("H", "e", "l", "o", "W", "r", "d");
+    }
 }
