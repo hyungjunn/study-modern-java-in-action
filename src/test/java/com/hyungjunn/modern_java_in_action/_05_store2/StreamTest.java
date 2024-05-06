@@ -10,6 +10,8 @@ import java.util.List;
 
 import static com.hyungjunn.modern_java_in_action._04_store.DishTest.menu;
 import static com.hyungjunn.modern_java_in_action._04_store.DishTest.specialMenu;
+import static java.util.Comparator.comparing;
+import static java.util.stream.Collectors.toList;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class StreamTest {
@@ -80,5 +82,29 @@ public class StreamTest {
         List<Dish> meatDishes = Order.filterToMeatAndLimitTwo(menu);
 
         assertThat(meatDishes).hasSize(2);
+    }
+
+    @Test
+    void testMap1() {
+        List<String> words = Arrays.asList("Modern", "Java", "In", "Action");
+
+        List<Integer> wordLengths = words.stream()
+                .map(String::length)
+                .toList();
+
+        assertThat(wordLengths).hasSize(4);
+        assertThat(wordLengths).containsExactly(6, 4, 2, 6);
+    }
+
+    @Test
+    void testMap2() {
+        List<Integer> dishNamesLengths = menu.stream()
+                .map(Dish::getName)
+                .map(String::length)
+                .distinct()
+                .sorted(comparing(Integer::intValue))
+                .toList();
+
+        assertThat(dishNamesLengths).containsExactly(4, 5, 6, 7, 12);
     }
 }
