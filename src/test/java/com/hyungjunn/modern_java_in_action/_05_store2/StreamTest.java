@@ -67,4 +67,11 @@ public class StreamTest {
 
         assertThat(dishes).hasSize(3);
     }
+
+    @Test
+    void testSkip() {
+        List<Dish> dishes = Order.filterGreaterThan300AndSkipTwo(menu);
+
+        assertThat(dishes).hasSize(6);
+    }
 }

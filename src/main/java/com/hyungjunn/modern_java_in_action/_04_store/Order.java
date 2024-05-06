@@ -135,4 +135,12 @@ public class Order {
                 .limit(3)
                 .collect(toList());
     }
+
+
+    public static List<Dish> filterGreaterThan300AndSkipTwo(List<Dish> menu) {
+        return menu.stream()
+                .filter(it -> it.getCalories() > 300)
+                .skip(2)
+                .collect(toList());
+    }
 }
