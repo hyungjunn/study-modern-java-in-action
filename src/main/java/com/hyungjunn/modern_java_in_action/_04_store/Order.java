@@ -128,4 +128,11 @@ public class Order {
                 .dropWhile(it -> it.getCalories() < 350)
                 .collect(toList());
     }
+
+    public static List<Dish> filterLimitThree(List<Dish> menu) {
+        return menu.stream()
+                .filter(it -> it.getCalories() > 120)
+                .limit(3)
+                .collect(toList());
+    }
 }

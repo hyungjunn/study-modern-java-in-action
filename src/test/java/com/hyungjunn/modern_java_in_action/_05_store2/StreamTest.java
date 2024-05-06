@@ -60,4 +60,11 @@ public class StreamTest {
 
         assertThat(slicedMenu2).hasSize(3);
     }
+
+    @Test
+    void testLimit() {
+        List<Dish> dishes = Order.filterLimitThree(specialMenu);
+
+        assertThat(dishes).hasSize(3);
+    }
 }
