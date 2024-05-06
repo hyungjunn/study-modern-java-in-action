@@ -226,4 +226,26 @@ public class StreamTest {
 
         assertThat(number).isEqualTo(9);
     }
+
+    @Test
+    void testReduce1() {
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+        // for-each loop
+        int sum = 0;
+        for (Integer number : numbers) {
+            sum += number;
+        }
+        assertThat(sum).isEqualTo(15);
+
+        // reduce
+        Integer sumByReduce = numbers.stream()
+                .reduce(0, Integer::sum);
+        assertThat(sumByReduce).isEqualTo(15);
+
+        // override reduce
+        Integer sumByOverrideReduce = numbers.stream()
+                .reduce(Integer::sum)
+                .orElseThrow();
+        assertThat(sumByOverrideReduce).isEqualTo(15);
+    }
 }
