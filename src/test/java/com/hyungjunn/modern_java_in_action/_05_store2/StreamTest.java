@@ -290,4 +290,28 @@ public class StreamTest {
 
         assertThat(maxCalories).isEqualTo(800);
     }
+
+    @Test
+    void testRangeClosed() {
+        long count = IntStream.rangeClosed(1, 100)
+                .filter(n -> n % 2 == 0)
+                .count();
+
+        // range 는 종료값을 제외
+        // rangeClosed 는 종료값을 포함
+        assertThat(count).isEqualTo(50L);
+    }
+
+    @Test
+    void testPythagoreanTriples() {
+        Stream<int[]> pythagoreanTriples = IntStream.rangeClosed(1, 100).boxed()
+                .flatMap(a ->
+                        IntStream.rangeClosed(a, 100)
+                                .mapToObj(b -> new double[]{a, b, Math.sqrt(a * a + b * b)})
+                                .filter(t -> t[2] % 1 == 0))
+                        .map(array -> Arrays.stream(array).mapToInt(a -> (int)a).toArray());
+
+        pythagoreanTriples.limit(5)
+                .forEach(t -> System.out.println(t[0] + ", " + t[1] + ", " + t[2]));
+    }
 }
