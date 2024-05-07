@@ -20,4 +20,12 @@ public class Dish {
     public String getName() {
         return this.name;
     }
+
+    public boolean isVegetarian() {
+        return vegetarian;
+    }
+
+    public boolean isMeat() {
+        return type == Type.MEAT;
+    }
 }

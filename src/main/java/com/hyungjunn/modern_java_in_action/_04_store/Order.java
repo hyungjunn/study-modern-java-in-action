@@ -3,7 +3,6 @@ package com.hyungjunn.modern_java_in_action._04_store;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
 
 import static java.util.Comparator.comparing;
@@ -85,6 +84,70 @@ public class Order {
         return menu.stream()
                 .filter(it -> it.getCalories() > 300)
                 .map(Dish::getName)
+                .collect(toList());
+    }
+
+    public static List<Dish> orderVegetarianByExternal(List<Dish> menu) {
+        List<Dish> vegetarianDishes = new ArrayList<>();
+        for (Dish dish : menu) {
+            if (dish.isVegetarian()) {
+                vegetarianDishes.add(dish);
+            }
+        }
+        return vegetarianDishes;
+    }
+
+    public static List<Dish> orderVegetarianByInternal(List<Dish> menu) {
+        return menu.stream()
+                .filter(Dish::isVegetarian)
+                .collect(toList());
+    }
+
+    public static List<Dish> filterLessThanCalories(List<Dish> menu) {
+        return menu.stream()
+                .filter(it -> it.getCalories() < 350)
+                .collect(toList());
+    }
+
+    public static List<Dish> filterLessThanCaloriesByTakeWhile(List<Dish> menu) {
+        // in java 9
+        // takeWhile
+        // 칼로리 순으로 menu 가 정렬되어 있다고 가정하자
+        // 위의 filter 를 쓰면 모든 요소에 프레디케이트를 적용해야한다
+        // 그러나, takeWhile 같이 슬라이싱 기법을 쓰면
+        // 아래에 주어진 값인 350 보다 크거나 같은 값이 나온다면
+        // 반복 작업을 중단한다
+        return menu.stream()
+                .takeWhile(it -> it.getCalories() < 350)
+                .collect(toList());
+    }
+
+    public static List<Dish> filterLessThanCaloriesByDropWhile(List<Dish> menu) {
+        // dropWhile 은 takeWhile 의 정반대 작업
+        return menu.stream()
+                .dropWhile(it -> it.getCalories() < 350)
+                .collect(toList());
+    }
+
+    public static List<Dish> filterLimitThree(List<Dish> menu) {
+        return menu.stream()
+                .filter(it -> it.getCalories() > 120)
+                .limit(3)
+                .collect(toList());
+    }
+
+
+    public static List<Dish> filterGreaterThan300AndSkipTwo(List<Dish> menu) {
+        return menu.stream()
+                .filter(it -> it.getCalories() > 300)
+                .skip(2)
+                .collect(toList());
+    }
+
+    public static List<Dish> filterToMeatAndLimitTwo(List<Dish> menu) {
+        return menu.stream()
+                .filter(Dish::isMeat)
+                .limit(2)
                 .collect(toList());
     }
 }
