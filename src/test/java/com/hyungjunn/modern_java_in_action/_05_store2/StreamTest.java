@@ -365,4 +365,11 @@ public class StreamTest {
                 .takeWhile(n -> n < 100)
                 .forEach(System.out::println);
     }
+
+    @Test
+    void testGenerate() {
+        Stream.generate(Math::random)
+                .limit(5)
+                .forEach(System.out::println);
+    }
 }
