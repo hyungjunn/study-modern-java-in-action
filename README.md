@@ -53,3 +53,6 @@
 ## chapter 5. 스트림 활용
 
 스트림 API 가 지원하는 다양한 연산을 살펴본다. 
+
+* [학습 내용]( https://github.com/hyungjunn/study-modern-java-in-action/pull/4 )
+
