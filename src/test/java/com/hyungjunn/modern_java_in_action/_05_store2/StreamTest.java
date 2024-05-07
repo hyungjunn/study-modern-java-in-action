@@ -2,21 +2,17 @@ package com.hyungjunn.modern_java_in_action._05_store2;
 
 import com.hyungjunn.modern_java_in_action._04_store.Dish;
 import com.hyungjunn.modern_java_in_action._04_store.Order;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import java.util.OptionalInt;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static com.hyungjunn.modern_java_in_action._04_store.DishTest.menu;
 import static com.hyungjunn.modern_java_in_action._04_store.DishTest.specialMenu;
 import static java.util.Comparator.comparing;
-import static java.util.stream.Collectors.toList;
-import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class StreamTest {
@@ -313,5 +309,37 @@ public class StreamTest {
 
         pythagoreanTriples.limit(5)
                 .forEach(t -> System.out.println(t[0] + ", " + t[1] + ", " + t[2]));
+    }
+
+    @Test
+    void testMakeStreamValue() {
+        Stream<String> stream = Stream.of("Modern", "Java", "In", "Action");
+        stream.map(String::toUpperCase).forEach(System.out::println);
+
+        Stream<String> emptyStream = Stream.empty();
+        emptyStream.forEach(System.out::println);
+    }
+
+    @Test
+    void testMakeStreamNullable() {
+        Stream<String> homeValueStream = Stream.ofNullable(System.getProperty("home"));
+
+        Stream<String> values = Stream.of("config", "home", "user")
+                .flatMap(key -> Stream.ofNullable(System.getProperty(key)));
+    }
+
+    @Test
+    void testMakeStreamArray() {
+        int[] numbers = {2, 3, 5, 7, 11, 13};
+        int sum = Arrays.stream(numbers).sum();
+
+        assertThat(sum).isEqualTo(41);
+    }
+
+    @Test
+    void testMakeStreamByFile() {
+        long uniqueWords = StreamBuilder.countUniqueWords();
+
+        assertThat(uniqueWords).isEqualTo(4);
     }
 }
