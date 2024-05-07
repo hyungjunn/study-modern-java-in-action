@@ -349,4 +349,20 @@ public class StreamTest {
                 .limit(20)
                 .forEach(t -> System.out.println("(" + t[0] + "," + t[1] + ")"));
     }
+
+    @Test
+    void testIterate() {
+        IntStream.iterate(0, n -> n < 100, n -> n + 4)
+                .forEach(System.out::println);
+
+        // non-short-circuit
+        // IntStream.iterate(0, n -> n + 4)
+        //         .filter(n -> n < 100)
+        //         .forEach(System.out::println);
+
+        // 위의 three parameter iterate 와 같은 동작을 한다
+        IntStream.iterate(0, n -> n + 4)
+                .takeWhile(n -> n < 100)
+                .forEach(System.out::println);
+    }
 }
