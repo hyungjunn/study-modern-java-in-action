@@ -1,7 +1,11 @@
 package com.hyungjunn.modern_java_in_action._04_store;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import static java.util.Arrays.asList;
 
 public class DishTest {
     public static final List<Dish> menu = Arrays.asList(
@@ -23,4 +27,17 @@ public class DishTest {
             new Dish("chicken", false, 400, Type.MEAT),
             new Dish("french fries", true, 530, Type.OTHER)
     );
+
+    public static final Map<String, List<String>> dishTags = new HashMap<>();
+    static {
+        dishTags.put("pork", asList("greasy", "salty"));
+        dishTags.put("beef", asList("salty", "roasted"));
+        dishTags.put("chicken", asList("fried", "crisp"));
+        dishTags.put("french fries", asList("greasy", "fried"));
+        dishTags.put("rice", asList("light", "natural"));
+        dishTags.put("season fruit", asList("fresh", "natural"));
+        dishTags.put("pizza", asList("tasty", "salty"));
+        dishTags.put("prawns", asList("tasty", "roasted"));
+        dishTags.put("salmon", asList("delicious", "fresh"));
+    }
 }

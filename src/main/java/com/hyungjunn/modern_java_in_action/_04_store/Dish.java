@@ -50,4 +50,8 @@ public class Dish {
                 "name='" + name + '\'' +
                 '}';
     }
+
+    public Type getType() {
+        return this.type;
+    }
 }
