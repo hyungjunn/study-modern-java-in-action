@@ -53,3 +53,9 @@
 ## chapter 5. 스트림 활용
 
 스트림 API 가 지원하는 다양한 연산을 살펴본다. 
+
+* [학습 내용]( https://github.com/hyungjunn/study-modern-java-in-action/pull/4 )
+
+## chapter 6. 스트림으로 데이터 수집
+
+collect 가 다양한 요소 누적 방식을 인수로 받아서 스트림을 최종 결과로 도출하는 리듀싱 연산을 수행할 수 있음을 설명한다. 
