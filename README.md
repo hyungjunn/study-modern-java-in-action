@@ -61,3 +61,7 @@
 collect 가 다양한 요소 누적 방식을 인수로 받아서 스트림을 최종 결과로 도출하는 리듀싱 연산을 수행할 수 있음을 설명한다. 
 
 * [학습 내용]( https://github.com/hyungjunn/study-modern-java-in-action/pull/5 )
+
+## chapter 7. 
+
+스트림으로 데이터 컬렉션 관련 동작을 얼마나 쉽게 병렬로 실행할 수 있는지 설명한다.
