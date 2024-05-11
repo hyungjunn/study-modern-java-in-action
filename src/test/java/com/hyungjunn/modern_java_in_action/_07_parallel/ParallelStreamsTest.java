@@ -2,6 +2,7 @@ package com.hyungjunn.modern_java_in_action._07_parallel;
 
 import org.junit.jupiter.api.Test;
 
+import static com.hyungjunn.modern_java_in_action._07_parallel.ParallelStreamHarness.measurePerf;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ParallelStreamsTest {
@@ -24,5 +25,11 @@ public class ParallelStreamsTest {
         long sum = ParallelStreams.parallelSum(10_000_000L);
 
         assertThat(sum).isEqualTo(50_000_005_000_000L);
+    }
+
+    @Test
+    void testSideEffectParallelSum() {
+        System.out.println("SideEffect sum done in: " + measurePerf(ParallelStreams::sideEffectSum, 10_000_000L) + " msecs");
+        System.out.println("SideEffect parallel sum done in: " + measurePerf(ParallelStreams::sideEffectParallelSum, 10_000_000L) + " msecs");
     }
 }
