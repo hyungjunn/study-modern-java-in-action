@@ -1,7 +1,8 @@
 package com.hyungjunn.modern_java_in_action._07_parallel;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class WordCounterTest {
     @Test
@@ -10,6 +11,16 @@ public class WordCounterTest {
 
         WordCounter seperatedWordCounter = wordCounter.accumulate('a');
 
-        Assertions.assertThat(seperatedWordCounter).isEqualTo(new WordCounter(1, false));
+        assertThat(seperatedWordCounter).isEqualTo(new WordCounter(1, false));
+    }
+
+    @Test
+    void testCombine() {
+        WordCounter rightCounter = new WordCounter(10, true);
+        WordCounter leftCounter = new WordCounter(20, true);
+
+        WordCounter all = rightCounter.combine(leftCounter);
+
+        assertThat(all).isEqualTo(new WordCounter(30, true));
     }
 }

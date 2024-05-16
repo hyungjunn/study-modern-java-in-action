@@ -30,4 +30,8 @@ public class WordCounter {
     public int hashCode() {
         return Objects.hash(count, lastSpace);
     }
+
+    public WordCounter combine(WordCounter wordCounter) {
+        return new WordCounter(this.count + wordCounter.count, wordCounter.lastSpace);
+    }
 }
