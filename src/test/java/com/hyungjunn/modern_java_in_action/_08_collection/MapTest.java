@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.ConcurrentHashMap;
 
 import static java.util.Map.entry;
 import static org.assertj.core.api.Assertions.*;
@@ -153,5 +154,14 @@ public class MapTest {
                 everyone.merge(k, v, (movie1, movie2) -> movie1 + " & " + movie2));
 
         assertThat(everyone.get("Cristina")).isEqualTo("James Bond & Matrix");
+    }
+
+    @Test
+    void testConcurrentHashMap() {
+        ConcurrentHashMap<String, String> aespa = new ConcurrentHashMap<>();
+        aespa.put("Leader", "Karina");
+        aespa.put("MainVocal", "Winter");
+
+        assertThat(aespa.mappingCount()).isEqualTo(2);
     }
 }
