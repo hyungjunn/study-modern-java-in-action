@@ -122,4 +122,36 @@ public class MapTest {
         assertThat(favouriteMovies.get("Raphael")).isEqualTo("STAR WARS");
         assertThat(favouriteMovies.get("Olivia")).isEqualTo("JAMES BOND");
     }
+
+    @Test
+    void testPutAll() {
+        Map<String, String> family = Map.ofEntries(
+                entry("Teo", "Star Wars"),
+                entry("Cristina", "James Bond"));
+
+        Map<String, String> friends = Map.ofEntries(
+                entry("Raphael", "Star Wars"));
+
+        HashMap<String, String> everyone = new HashMap<>(family);
+        everyone.putAll(friends);
+
+        assertThat(everyone.get("Raphael")).isEqualTo("Star Wars");
+    }
+
+    @Test
+    void testMerge() {
+        Map<String, String> family = Map.ofEntries(
+                entry("Teo", "Star Wars"),
+                entry("Cristina", "James Bond"));
+
+        Map<String, String> friends = Map.ofEntries(
+                entry("Raphael", "Star Wars"),
+                entry("Cristina", "Matrix"));
+
+        HashMap<String, String> everyone = new HashMap<>(family);
+        friends.forEach((k, v) ->
+                everyone.merge(k, v, (movie1, movie2) -> movie1 + " & " + movie2));
+
+        assertThat(everyone.get("Cristina")).isEqualTo("James Bond & Matrix");
+    }
 }
