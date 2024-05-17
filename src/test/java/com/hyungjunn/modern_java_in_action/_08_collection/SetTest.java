@@ -6,7 +6,7 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class SetFactoryTest {
+public class SetTest {
     @Test
     void testSetException() {
         assertThatThrownBy(() -> Set.of("Karina", "Karina", "Karina"))

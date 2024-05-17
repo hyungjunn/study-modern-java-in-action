@@ -7,7 +7,7 @@ import java.util.Map;
 import static java.util.Map.entry;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class MapFactoryTest {
+public class MapTest {
     @Test
     void testMapFactoryMethod() {
         Map<String, Integer> ageOfFriends = Map.of("Raphael", 30, "Olivia", 25, "Thibaut", 26);

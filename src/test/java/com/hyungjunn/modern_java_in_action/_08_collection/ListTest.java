@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 
-public class UnsupportedOperationExceptionTest {
+public class ListTest {
     @Test
     void testAsListException() {
         List<String> friends = Arrays.asList("Karina", "Winter");
