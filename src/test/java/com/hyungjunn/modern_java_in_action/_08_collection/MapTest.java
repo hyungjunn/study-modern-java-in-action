@@ -109,4 +109,17 @@ public class MapTest {
 
         assertThat(favouriteMovies).isEqualTo(new HashMap<>());
     }
+
+    @Test
+    void testReplaceAll() {
+        Map<String, String> favouriteMovies = new HashMap<>();
+
+        favouriteMovies.put("Raphael", "Star Wars");
+        favouriteMovies.put("Olivia", "james bond");
+
+        favouriteMovies.replaceAll((friend, movie) -> movie.toUpperCase());
+
+        assertThat(favouriteMovies.get("Raphael")).isEqualTo("STAR WARS");
+        assertThat(favouriteMovies.get("Olivia")).isEqualTo("JAMES BOND");
+    }
 }
