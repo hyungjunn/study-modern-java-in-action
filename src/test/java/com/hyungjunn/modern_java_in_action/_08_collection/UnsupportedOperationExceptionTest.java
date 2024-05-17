@@ -35,7 +35,7 @@ public class UnsupportedOperationExceptionTest {
 
     @Test
     void testListOfException3() {
-        // Arrays.asList 와 다르게 요소로 null 요소를 금지함 
+        // Arrays.asList 와 다르게 요소로 null 요소를 금지함
         Assertions.assertThatThrownBy(() -> List.of(null, null))
                 .isInstanceOf(NullPointerException.class);
     }
