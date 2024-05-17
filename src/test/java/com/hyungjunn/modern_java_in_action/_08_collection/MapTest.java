@@ -32,4 +32,28 @@ public class MapTest {
         assertThat(ageOfFriends.get("Olivia")).isEqualTo(25);
         assertThat(ageOfFriends.get("Thibaut")).isEqualTo(26);
     }
+
+    @Test
+    void testEntryComparingByKey() {
+        Map<String, String> favouriteMovies = Map.ofEntries(entry("Raphael", "Star Wars"),
+                entry("Cristina", "Matrix"),
+                entry("Olivia", "James Bonds"));
+
+        favouriteMovies.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByKey())
+                .forEachOrdered(System.out::println);
+    }
+
+    @Test
+    void testEntryComparingByValue() {
+        Map<String, String> favouriteMovies = Map.ofEntries(entry("Raphael", "Star Wars"),
+                entry("Cristina", "Matrix"),
+                entry("Olivia", "James Bonds"));
+
+        favouriteMovies.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue())
+                .forEachOrdered(System.out::println);
+    }
 }
