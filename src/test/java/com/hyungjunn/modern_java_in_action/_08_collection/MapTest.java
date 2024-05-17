@@ -3,6 +3,11 @@ package com.hyungjunn.modern_java_in_action._08_collection;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static java.util.Map.entry;
@@ -67,5 +72,26 @@ public class MapTest {
 
         assertThat(favouriteMovies.getOrDefault("Olivia", "Matrix")).isEqualTo("James Bonds");
         assertThat(favouriteMovies.getOrDefault("Thibaut", "Matrix")).isEqualTo("Matrix");
+    }
+
+    @Test
+    void testComputeIfAbsent() {
+        Map<String, List<String>> friendsToMovies = new HashMap<>();
+
+        String friend = "Raphael";
+        List<String> movies = friendsToMovies.get(friend);
+        if (movies == null) {
+            movies = new ArrayList<>();
+            friendsToMovies.put(friend, movies);
+        }
+        movies.add("Star Wars");
+
+        assertThat(friendsToMovies.get("Raphael")).isEqualTo(List.of("Star Wars"));
+
+        // computeIfAbsent 적용
+        friendsToMovies.computeIfAbsent("Karina", name -> new ArrayList<>())
+                .add("Pretty Idol");
+
+        assertThat(friendsToMovies.get("Karina")).isEqualTo(List.of("Pretty Idol"));
     }
 }
