@@ -1,10 +1,12 @@
 package com.hyungjunn.modern_java_in_action._08_collection;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
 import static java.util.Map.entry;
+import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class MapTest {
@@ -55,5 +57,15 @@ public class MapTest {
                 .stream()
                 .sorted(Map.Entry.comparingByValue())
                 .forEachOrdered(System.out::println);
+    }
+
+    @Test
+    void testGetOrDefault() {
+        Map<String, String> favouriteMovies = Map.ofEntries(
+                entry("Raphael", "Star Wars"),
+                entry("Olivia", "James Bonds"));
+
+        assertThat(favouriteMovies.getOrDefault("Olivia", "Matrix")).isEqualTo("James Bonds");
+        assertThat(favouriteMovies.getOrDefault("Thibaut", "Matrix")).isEqualTo("Matrix");
     }
 }
