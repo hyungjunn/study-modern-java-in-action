@@ -16,4 +16,27 @@ public class UnsupportedOperationExceptionTest {
         Assertions.assertThatThrownBy(() ->  friends.add("ningning"))
                 .isInstanceOf(UnsupportedOperationException.class);
     }
+
+    @Test
+    void testListOfException() {
+        List<String> friends = List.of("Karina", "Winter");
+
+        Assertions.assertThatThrownBy(() -> friends.add("giselle"))
+                .isInstanceOf(UnsupportedOperationException.class);
+    }
+
+    @Test
+    void testListOfException2() {
+        List<String> friends = List.of("Karina", "Winter");
+        // List.of(..) 는 Arrays.asList 와 다르게 갱신도 되지 않음
+        Assertions.assertThatThrownBy(() -> friends.set(0, "ningning"))
+                .isInstanceOf(UnsupportedOperationException.class);
+    }
+
+    @Test
+    void testListOfException3() {
+        // Arrays.asList 와 다르게 요소로 null 요소를 금지함 
+        Assertions.assertThatThrownBy(() -> List.of(null, null))
+                .isInstanceOf(NullPointerException.class);
+    }
 }
