@@ -1,5 +1,6 @@
 package com.hyungjunn.modern_java_in_action._08_collection;
 
+import com.hyungjunn.modern_java_in_action._07_parallel.ParallelStreams;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import static java.util.Map.entry;
 import static org.assertj.core.api.Assertions.*;
@@ -93,5 +95,18 @@ public class MapTest {
                 .add("Pretty Idol");
 
         assertThat(friendsToMovies.get("Karina")).isEqualTo(List.of("Pretty Idol"));
+    }
+
+    @Test
+    void testRemoveBeforeJava8() {
+        Map<String, String> favouriteMovies = new HashMap<>();
+
+        String key = "Raphael";
+        String value = "Jack Reacher2";
+
+        favouriteMovies.put(key, value);
+        favouriteMovies.remove(key, value);
+
+        assertThat(favouriteMovies).isEqualTo(new HashMap<>());
     }
 }
