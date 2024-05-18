@@ -62,6 +62,12 @@ collect 가 다양한 요소 누적 방식을 인수로 받아서 스트림을 �
 
 * [학습 내용]( https://github.com/hyungjunn/study-modern-java-in-action/pull/5 )
 
-## chapter 7. 
+## chapter 7. 병렬 데이터 처리와 성능
 
 스트림으로 데이터 컬렉션 관련 동작을 얼마나 쉽게 병렬로 실행할 수 있는지 설명한다.
+
+* [학습 내용]( https://github.com/hyungjunn/study-modern-java-in-action/pull/6 )
+
+## chapter 8. 컬렉션 API 개선
+
+자바 8, 9에서 추가된 컬렉션 API 개선 사항을 살펴본다.
