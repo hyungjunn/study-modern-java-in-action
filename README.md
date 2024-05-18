@@ -71,3 +71,5 @@ collect 가 다양한 요소 누적 방식을 인수로 받아서 스트림을 �
 ## chapter 8. 컬렉션 API 개선
 
 자바 8, 9에서 추가된 컬렉션 API 개선 사항을 살펴본다.
+
+* [학습 내용]( https://github.com/hyungjunn/study-modern-java-in-action/pull/7 )
