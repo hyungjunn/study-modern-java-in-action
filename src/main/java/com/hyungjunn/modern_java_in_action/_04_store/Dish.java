@@ -1,6 +1,10 @@
 package com.hyungjunn.modern_java_in_action._04_store;
 
+import com.hyungjunn.modern_java_in_action._06_collector.CaloricLevel;
+
 import java.util.Objects;
+
+import static com.hyungjunn.modern_java_in_action._06_collector.CaloricLevel.DIET;
 
 public class Dish {
     private final String name;
@@ -53,5 +57,13 @@ public class Dish {
 
     public Type getType() {
         return this.type;
+    }
+
+    public CaloricLevel getCaloricLevel() {
+        if (this.getCalories() <= 400) {
+            return DIET;
+        } else if (this.getCalories() <= 700) {
+            return CaloricLevel.NORMAL;
+        } else return CaloricLevel.FAT;
     }
 }

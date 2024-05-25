@@ -20,14 +20,7 @@ public class Grouping {
     }
 
     public static Map<CaloricLevel, List<Dish>> groupDishesByCaloricLevel() {
-        return menu.stream().collect(
-                groupingBy(dish -> {
-                    if (dish.getCalories() <= 400) {
-                        return DIET;
-                    } else if (dish.getCalories() <= 700) {
-                        return CaloricLevel.NORMAL;
-                    } else return CaloricLevel.FAT;
-                }));
+        return menu.stream().collect(groupingBy(Dish::getCaloricLevel));
     }
 
     public static Map<Type, List<Dish>> groupCaloricDishesByType() {
